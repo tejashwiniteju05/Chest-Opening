@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.projectsetuptool.scene-generator": {
+      "version": "https://github.com/zen0x00/ProjectSetupTool.git?path=/Packages/com.projectsetuptool.scene-generator",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d5ea509b6a6498080862cb4cdc51790688846cbb"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 1,
@@ -104,13 +111,6 @@
       "dependencies": {
         "com.unity.test-framework": "1.1.33"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ide.vscode": {
-      "version": "1.2.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {

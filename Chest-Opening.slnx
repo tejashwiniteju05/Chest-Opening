@@ -1,4 +1,3 @@
 ﻿<Solution>
-  <Project Path="ChestOpening.Runtime.csproj" />
-  <Project Path="ChestOpening.EditorTests.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
 </Solution>
