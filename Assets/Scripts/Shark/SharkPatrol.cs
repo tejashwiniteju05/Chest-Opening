@@ -17,7 +17,6 @@ public class SharkPatrol : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
 
