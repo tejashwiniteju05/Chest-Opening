@@ -107,7 +107,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -127,5 +127,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Treasure
   scoreValue: 10
   despawnDistance: 10
-  collectEffectPrefab: {fileID: 0}
-  missEffectPrefab: {fileID: 0}
+  collectEffectPrefab: {fileID: 4985343200465590429}
+  missEffectPrefab: {fileID: 4985343200465590429}

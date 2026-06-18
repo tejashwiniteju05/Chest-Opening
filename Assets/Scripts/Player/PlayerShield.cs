@@ -3,62 +3,91 @@ using UnityEngine;
 public class PlayerShield : MonoBehaviour
 {
     [SerializeField] private GameObject _shieldPrefab;
-    [SerializeField] private float _shieldTime = 5f;
-    [SerializeField] private bool _isShieldActive;
-    [SerializeField] private float _sheildRecoveryTime = 5f;
-    private float _shieldTimer;
-    private float _sheildRecoveryTimer;
+    [SerializeField] private float _shieldDuration = 5f;
+    [SerializeField] private float _cooldownDuration = 10f;
 
-    private GameObject _shield;
+    private enum SheildState { Ready, Active, Cooldown}
+    private SheildState _state = SheildState.Ready;
 
+    private float _timer;
 
-    [SerializeField] private Transform playerTranform;
+    private GameObject _shieldInstance;
+
+    public float sheildHeightOffset = 0.7f;
+
+    private Animator sheildAnimator;
 
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        HandleInput();
+        RunTimer();
+
+    }
+
+    public void HandleInput()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift) && _state == SheildState.Ready)
         {
-            if (!_isShieldActive && _shieldTimer <= 0)
-            {
-                ActivateShield();
-                _shieldTimer = _shieldTime;
-                _isShieldActive = true;
-            }
+            ActivateShield();
+            sheildAnimator.SetTrigger("sheildActivate");
+            AudioManager.Instance.PlaySheildActivate();
         }
-
-        _shieldTimer -= Time.deltaTime;
-       
-
-        CheckTimerAndDeactivateShield();
-
     }
 
     private void ActivateShield()
     {
-        Vector3 targetSheildPos = playerTranform.position + 3f * Vector3.forward;
+        Vector3 sheildPos = transform.position + transform.up * sheildHeightOffset;
 
-        _shield = Instantiate(_shieldPrefab, targetSheildPos, Quaternion.identity , playerTranform);
+        _shieldInstance = Instantiate(_shieldPrefab, sheildPos, Quaternion.identity , transform);
+
+        sheildAnimator = _shieldInstance.GetComponent<Animator>();
+
+        SetTimer(_shieldDuration);
+        _state = SheildState.Active;
 
     }
 
-    private void CheckTimerAndDeactivateShield()
+    private void SetTimer(float duration)
     {
-        if (_isShieldActive)
+        _timer = duration;
+    }
+
+    private void RunTimer()
+    {
+        if (_state == SheildState.Ready) return;
+
+        _timer -= Time.deltaTime;
+
+        if( _timer < 0 )
         {
-            if(_shieldTimer <= 0)
+            _timer = 0;
+
+            if (_state == SheildState.Active)
             {
-                _isShieldActive = false;
-                _shieldTimer = 0;
-                Destroy(_shield);
-                StartSheildRecovery();
+                DeactivateShield();
+                AudioManager.Instance.PlaySheildDeactivate();
             }
+            else if (_state == SheildState.Cooldown) _state = SheildState.Ready;
         }
     }
 
-    private void StartSheildRecovery()
+    private void DeactivateShield()
     {
+        if(_shieldInstance != null)
+        {
+            sheildAnimator.SetTrigger("sheildDeactivate");
+            Invoke("DestroySheild", 1f);
+        }
 
+        _state = SheildState.Cooldown;
+
+        SetTimer(_cooldownDuration);
+    }
+
+    private void DestroySheild()
+    {
+        Destroy(_shieldInstance);
     }
 
 }

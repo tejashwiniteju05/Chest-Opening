@@ -17,6 +17,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip obstacleHitClip;
     public AudioClip swimLoopClip;
     public AudioClip gameOverClip;
+    public AudioClip sheildActivatedClip;
+    public AudioClip sheildDeactivatedClip;
+
 
     private const string VolumePrefKey = "SFXVolume";
     private const string MusicPrefKey = "MusicVolume";
@@ -82,6 +85,7 @@ public class AudioManager : MonoBehaviour
         PlaySFX(treasureCollectClip);
     }
 
+
     public void PlayTreasureMiss()
     {
         PlaySFX(treasureMissClip);
@@ -100,6 +104,16 @@ public class AudioManager : MonoBehaviour
     public void PlayGameOver()
     {
         PlaySFX(gameOverClip);
+    }
+
+    public void PlaySheildActivate()
+    {
+        PlaySFX(sheildActivatedClip);
+    }
+
+    public void PlaySheildDeactivate()
+    {
+        PlaySFX(sheildDeactivatedClip);
     }
 
     private void PlaySFX(AudioClip clip)

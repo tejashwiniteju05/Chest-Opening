@@ -26,6 +26,8 @@ public class ChestMovement : MonoBehaviour
     private float elapsedTime;
     private float lateralInput;
 
+    private Animator playerAnimator;
+
     public float CurrentSpeed => swimSpeed * currentSpeedMultiplier;
     public float SpeedMultiplier => currentSpeedMultiplier;
     public bool IsChestOpen => isChestOpen;
@@ -38,13 +40,18 @@ public class ChestMovement : MonoBehaviour
             rb.useGravity = false;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
         }
+
+        playerAnimator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         isChestOpen = Input.GetKey(chestOpenKey);
 
-        lateralInput = 0f;
+        if (isChestOpen) playerAnimator.SetBool("isFast", true);
+        else playerAnimator.SetBool("isFast", false);
+
+            lateralInput = 0f;
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             lateralInput = -1f;
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
