@@ -31,7 +31,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: GLTF_created_0|Animation
+      name: shark_move
       takeName: GLTF_created_0|Animation
       internalID: 3278314618588425075
       firstFrame: 0

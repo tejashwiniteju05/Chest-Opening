@@ -173,6 +173,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SHARK
       objectReference: {fileID: 0}
+    - target: {fileID: 2290454560166156690, guid: f20da858a2d3d5e4783ffb36ecfa86b7,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e911c09a32a11b49a10a3482fe58cbe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -5117700066308340382, guid: f20da858a2d3d5e4783ffb36ecfa86b7, type: 3}

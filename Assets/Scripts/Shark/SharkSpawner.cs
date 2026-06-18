@@ -28,7 +28,7 @@ public class SharkSpawner : MonoBehaviour
     {
         Vector3 spawnPos = new Vector3(
             0f,
-            0f,
+            10f,
             nextSpawnZ + 30f
         );
 
