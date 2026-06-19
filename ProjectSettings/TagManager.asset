@@ -17,6 +17,7 @@ TagManager:
   - Enemy
   - Player
   - Treasure
+  - MantaRay
   layers:
   - Default
   - TransparentFX
