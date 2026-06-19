@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerShield : MonoBehaviour
@@ -18,7 +19,7 @@ public class PlayerShield : MonoBehaviour
     private Animator _sheildAnimator;
 
     public float sheildDamage = 40f;
-
+    public TextMeshProUGUI sheildTimerText;
     public SheildState state => _state;
 
     public static PlayerShield instance;
@@ -36,6 +37,13 @@ public class PlayerShield : MonoBehaviour
         HandleInput();
         RunTimer();
 
+        if (_state is not SheildState.Ready)
+        {
+            sheildTimerText.gameObject.SetActive(true);
+            DisplaySheildTimer(_state);
+        }
+        else
+            sheildTimerText.gameObject.SetActive(false);
     }
 
     public void HandleInput()
@@ -93,6 +101,19 @@ public class PlayerShield : MonoBehaviour
       _state = SheildState.Cooldown;
 
       SetTimer(_cooldownDuration);
+    }
+
+    public void DisplaySheildTimer(SheildState s)
+    {
+        sheildTimerText.text = Mathf.RoundToInt(_timer).ToString();
+        if (s is SheildState.Active)
+        {
+            sheildTimerText.color = Color.blueViolet;
+        }
+        else
+        {
+            sheildTimerText.color = Color.black;
+        }
     }
 
     private void DestroySheild()
