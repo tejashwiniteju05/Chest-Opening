@@ -91,15 +91,26 @@ public class SharkPatrol : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        if (agent == null)
+            agent = GetComponent<NavMeshAgent>();
+
+        startPos = transform.position;
+        moveRight = true;
+
+        SetPatrolDestination();
+    }
+
     void Attack()
     {
         lastAttackTime = Time.time;
 
-        // playerhealth hp = player.GetComponent<playerhealth>();
+        PlayerHealth hp = player.GetComponent<PlayerHealth>();
 
-        // if (hp != null)
-        // {
-        //     hp.Danger();
-        // }
+        if (hp != null)
+        {
+            hp.TakeDamage();
+        }
     }
 }

@@ -10278,8 +10278,8 @@ MonoBehaviour:
   poolSize: 10
   player: {fileID: 407270973}
   spawnDistanceAhead: 40
-  minLateralOffset: -4
-  maxLateralOffset: 4
+  minLateralOffset: -5
+  maxLateralOffset: 5
   initialInterval: 4
   minInterval: 5
   intervalDecreaseRate: 0.02
@@ -12903,16 +12903,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430fc02369b13d361a764cdb2f73d9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  musicSource: {fileID: 0}
+  uiMusicSource: {fileID: 0}
+  gameMusicSource: {fileID: 0}
   sfxSource: {fileID: 1471339709}
-  ambientMusic: {fileID: 0}
+  movementSource: {fileID: 0}
+  sharkSource: {fileID: 0}
+  shieldSource: {fileID: 0}
+  buttonSource: {fileID: 0}
+  uiBackgroundMusic: {fileID: 0}
+  gameBackgroundMusic: {fileID: 0}
+  AmbientMusic: {fileID: 0}
+  buttonClickSound: {fileID: 0}
   treasureCollectClip: {fileID: 0}
-  treasureMissClip: {fileID: 0}
-  obstacleHitClip: {fileID: 0}
+  sharkChaseLoop: {fileID: 0}
+  sharkDamageClip: {fileID: 0}
+  shieldstartLoop: {fileID: 0}
+  shieldstopLoop: {fileID: 0}
   swimLoopClip: {fileID: 0}
   gameOverClip: {fileID: 0}
-  sheildActivatedClip: {fileID: 0}
-  sheildDeactivatedClip: {fileID: 0}
+  obstacleHitClip: {fileID: 0}
 --- !u!114 &2112460701
 MonoBehaviour:
   m_ObjectHideFlags: 0
